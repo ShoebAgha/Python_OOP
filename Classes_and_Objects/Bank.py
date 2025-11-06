@@ -22,7 +22,26 @@ class Bank:
 
         print(f"Your Account number is: {useraccountNumber}")
 
+    def closeAccount(self):
+        print("**** Closing Account****")
+        accountNumber=int(input("Enter your account number to close the account: "))
+                
+        userpassword=input("Enter your password: ")
+        if self.accountsDict[accountNumber].password !=userpassword:
+            print("Incorrect Password")
+            return None
+        else:
+            closingBalance=self.accountsDict[accountNumber].getBalance(userpassword)
+            print('You had', closingBalance,'in	your account, which is	being returned to you.')
+            del self.accountsDict[accountNumber]
+            print("Account is closed")
+
+
+
+
 newBank=Bank()
 newBank.openAccount()
+print(newBank.accountsDict[19790862])
+newBank.closeAccount()
 
         
